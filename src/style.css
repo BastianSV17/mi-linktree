@@ -1,0 +1,148 @@
+:root {
+  --gold: #d4b254;
+  --bg: #0f0f0f;
+  --white: #111;
+  --black: #f5f5f5;
+  --gray: #aaa;
+}
+
+body.light {
+  --white: #ffffff;
+  --black: #111;
+  --gray: #666;
+  --bg: #f9f9f9;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: var(--bg);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.4s;
+  position: relative;
+  z-index: 1;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 420px;
+  padding: 24px;
+  text-align: center;
+  animation: fadeIn 0.8s ease;
+}
+
+.logo {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+h1 {
+  font-size: 24px;
+  color: var(--black);
+  letter-spacing: 1px;
+}
+
+.subtitle {
+  color: var(--gray);
+  margin-bottom: 25px;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  text-decoration: none;
+  padding: 15px;
+  margin-bottom: 14px;
+  border-radius: 14px;
+  font-weight: 600;
+  color: #fff;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.link:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+footer {
+  margin-top: 25px;
+  font-size: 12px;
+  color: var(--gray);
+}
+
+#darkModeBtn {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  background: var(--gold);
+  border: none;
+  color: #fff;
+  padding: 10px 12px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(100px);
+  z-index: -1;
+  opacity: 0.35;
+  animation: floatLights 6s ease-in-out infinite alternate;
+  pointer-events: none;
+  will-change: transform;
+}
+
+body::before {
+  width: 60vw;
+  height: 60vw;
+  background: var(--gold);
+  top: -10%;
+  left: -10%;
+}
+
+body::after {
+  width: 50vw;
+  height: 50vw;
+  background: #f0d28a;
+  bottom: -10%;
+  right: -10%;
+  animation-delay: -3s;
+}
+
+@keyframes floatLights {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(200px, 100px) scale(1.2); }
+}
+
+@media (max-width: 400px) {
+  h1 {
+    font-size: 21px;
+  }
+}
